@@ -1,5 +1,13 @@
+/***********************************************
+ * Auther:Ahmed omar 
+ * file: include all base addresses 
+ * 
+*/
+
 #ifndef MCAL_H_
 #define MCAL_H_
+
+
 #include "macros.h"
 
    #if (STM32F401 == 1)
@@ -146,6 +154,10 @@
 
    /******************************** End Base addresses for memories  STM32F401 **************************************/
 
+
+
+
+
    /*********************************************************************************************************************
     * 
     *                                              Base addresses for Buses STM32F401
@@ -187,6 +199,10 @@
    #define PWR_BASEADDR                                          (APB1PERIPH_BASE + 0x7000U)                 /*<It is base address for PWR periphral >*/
 
    /*********************************************** End Base addresses for peripherals hanging on APB1 bus domain STM32F401 ********************************/
+
+
+
+
 
    /*********************************************************************************************************************
     * 
@@ -277,7 +293,144 @@
 
    }SYSCFG_RegDef_t;
 
+
+
+
+/*===================== RCC definition strucure==============*/
+typedef struct{
+   volatile uint32_t CR;                                                                                /*<It is RCC clock control register                     >*/                                     
+   volatile uint32_t PLLCFGR;                                                                           /*<It is RCC PLL configuration register                 >*/
+   volatile uint32_t CFGR;                                                                              /*<It is RCC clock configuration register               >*/
+   volatile uint32_t CIR;                                                                               /*<It is RCC clock interrupt register                   >*/
+   volatile uint32_t AHB1RSTR;                                                                          /*<It is RCC AHB1 peripheral reset register             >*/
+   volatile uint32_t AHB2RSTR;                                                                          /*<It is RCC AHB2 peripheral reset register             >*/
+   volatile uint32_t RESERVED1[2];                                                                      /*<It is RCC Reserved register                          >*/
+   volatile uint32_t APB1RSTR;                                                                          /*<It is RCC APB1 peripheral reset register             >*/
+   volatile uint32_t APB2RSTR;                                                                          /*<It is RCC APB2 peripheral reset register             >*/
+   volatile uint32_t RESERVED2[2];                                                                      /*<It is RCC Reserved2 register                         >*/
+   volatile uint32_t AHB1ENR;                                                                           /*<It is RCC AHB1 peripheral clock enable register     >*/
+   volatile uint32_t AHB2ENR;                                                                           /*<It is GPIO port alternate H, L function register     >*/
+   volatile uint32_t RESERVED3[2];                                                                      /*<It is RCC Reserved3 register                         >*/
+   volatile uint32_t APB1ENR;                                                                           /*<It is GPIO port alternate H, L function register     >*/
+   volatile uint32_t APB2ENR;                                                                           /*<It is GPIO port alternate H, L function register     >*/
+   volatile uint32_t RESERVED4[2];                                                                      /*<It is RCC Reserved4 register                         >*/
+   volatile uint32_t AHB1LPENR;                                                                         /*<It is GPIO port alternate H, L function register     >*/
+   volatile uint32_t AHB2LPENR;                                                                         /*<It is GPIO port alternate H, L function register     >*/
+   volatile uint32_t RESERVED5[2];                                                                      /*<It is RCC Reserved5 register                         >*/
+   volatile uint32_t APB1LPENR;                                                                         /*<It is GPIO port alternate H, L function register     >*/
+   volatile uint32_t APB2LPENR;                                                                         /*<It is GPIO port alternate H, L function register     >*/
+   volatile uint32_t RESERVED6[2];                                                                      /*<It is RCC Reserved6 register                         >*/
+   volatile uint32_t BDCR;                                                                              /*<It is GPIO port mode register                        >*/                                     
+   volatile uint32_t CSR;                                                                               /*<It is GPIO port mode register                        >*/                                     
+   volatile uint32_t RESERVED7[2];                                                                      /*<It is RCC Reserved7 register                         >*/
+   volatile uint32_t SSCGR;                                                                             /*<It is GPIO port mode register                        >*/                                     
+   volatile uint32_t PLLI2SCFGR;                                                                        /*<It is GPIO port mode register                        >*/                                     
+   volatile uint32_t RESERVED8;                                                                         /*<It is RCC Reserved8 register                         >*/
+   volatile uint32_t DCKCFGR;                                                                           /*<It is GPIO port alternate H, L function register     >*/
+}RCC_RegDef_t;
+
+
+
+/*===================== End GPIO definition strucure ==============*/
+
+/*===================== EXTI definition strucure==============*/
+typedef struct{
+   volatile uint32_t IMR;                                                                              /*<It is Interrupt mask register                        >*/
+   volatile uint32_t EMR;                                                                              /*<It is Event mask register                            >*/
+   volatile uint32_t RTSR;                                                                             /*<It is Rising trigger selection register              >*/
+   volatile uint32_t FTSR;                                                                             /*<It is Falling trigger selection register             >*/
+   volatile uint32_t SWIER;                                                                            /*<It is Software interrupt event register              >*/
+   volatile uint32_t PR;                                                                               /*<It is Pending register                               >*/
+}EXTI_RegDef_t;
+
+
+
+
+/************************** End Peripheral register definition structures ********************************/
+
+
+
+
+/*===================== Casting GPIO definition ==============*/
+#define GPIOA                                               ((GPIO_RegDef_t*)GPIOA_BASEADDR)            /*<It is  casting for GPIOA  struct                     >*/   
+#define GPIOB                                               ((GPIO_RegDef_t*)GPIOB_BASEADDR)            /*<It is  casting for GPIOB  struct                     >*/
+#define GPIOC                                               ((GPIO_RegDef_t*)GPIOC_BASEADDR)            /*<It is  casting for GPIOC  struct                     >*/
+#define GPIOD                                               ((GPIO_RegDef_t*)GPIOD_BASEADDR)            /*<It is  casting for GPIOD  struct                     >*/
+#define GPIOE                                               ((GPIO_RegDef_t*)GPIOE_BASEADDR)            /*<It is  casting for GPIOE  struct                     >*/
+#define GPIOH                                               ((GPIO_RegDef_t*)GPIOH_BASEADDR)            /*<It is  casting for GPIOH  struct                     >*/
+/*===================== End Casting GPIO definition ==============*/
+
+/*===================== Casting RCC definition ==============*/
+#define RCC                                              ((RCC_RegDef_t*)RCC_BASEADDR)                  /*<It is  casting for GPIOA  struct                     >*/   
+/*===================== Casting RCC definition ==============*/
+
+
+
+
+/*===================== Casting EXTI definition ==============*/
+#define EXTI                                              ((EXTI_RegDef_t*)EXTI_BASEADDR)                  /*<It is  casting for GPIOA  struct                     >*/
+/*===================== Casting EXTI definition ==============*/
+
+/*===================== Casting SYSCFG definition ==============*/
+#define SYSCFG                                            ((SYSCFG_RegDef_t*)SYSCFG_BASEADDR)                  /*<It is  casting for GPIOA  struct                     >*/
+/*===================== Casting SYSCFG definition ==============*/
+
+
+
+
+
+
+/*================================================================ Macro For AHB1 enable clock =============================================================================*/
+#define GPIOA_PCLK_EN()                                   (RCC->AHB1ENR |= (1 << 0))                  /*<It is  ENABLE CLOCK For GPIOA                          >*/  
+#define GPIOB_PCLK_EN()                                   (RCC->AHB1ENR |= (1 << 1))                  /*<It is  ENABLE CLOCK For GPIOB                          >*/ 
+#define GPIOC_PCLK_EN()                                   (RCC->AHB1ENR |= (1 << 2))                  /*<It is  ENABLE CLOCK For GPIOC                          >*/  
+#define GPIOD_PCLK_EN()                                   (RCC->AHB1ENR |= (1 << 3))                  /*<It is  ENABLE CLOCK For GPIOD                          >*/         
+#define GPIOE_PCLK_EN()                                   (RCC->AHB1ENR |= (1 << 4))                  /*<It is  ENABLE CLOCK For GPIOE                          >*/  
+#define GPIOH_PCLK_EN()                                   (RCC->AHB1ENR |= (1 << 7))                  /*<It is  ENABLE CLOCK For GPIOH                          >*/  
+#define CRC_PCLK_EN()                                     (RCC->AHB1ENR |= (1 << 12))                 /*<It is  ENABLE CLOCK For CRC                            >*/ 
+#define DMA1_PCLK_EN()                                    (RCC->AHB1ENR |= (1 << 21))                 /*<It is  ENABLE DMA1 clock enable                        >*/
+#define DMA2_PCLK_EN()                                    (RCC->AHB1ENR |= (1 << 22))                 /*<It is  ENABLE DMA2 clock enable                        >*/
+
+/*================================================================ Macro For AHB2 enable clock =============================================================================*/
+#define OTGFS_PCLK_EN()                                   (RCC->AHB2ENR |= (1 << 7))                  /*<It is  USB OTG FS clock enabled                        >*/ 
+
+
+/*================================================================ Macro For APB1 enable clock =============================================================================*/
+#define TIM2_PCLK_EN()                                    (RCC->APB1ENR |= (1 << 0))                  /*<It is  ENABLE CLOCK For TIME2                          >*/  
+#define TIM3_PCLK_EN()                                    (RCC->APB1ENR |= (1 << 1))                  /*<It is  ENABLE CLOCK For TIME3                          >*/  
+#define TIM4_PCLK_EN()                                    (RCC->APB1ENR |= (1 << 2))                  /*<It is  ENABLE CLOCK For TIME4                          >*/  
+#define TIM5_PCLK_EN()                                    (RCC->APB1ENR |= (1 << 3))                  /*<It is  ENABLE CLOCK For TIME5                          >*/  
+#define TIM5_PCLK_EN()                                    (RCC->APB1ENR |= (1 << 3))                  /*<It is  ENABLE CLOCK For TIME5                          >*/ 
+#define WWDG_PCLK_EN()                                    (RCC->APB1ENR |= (1 << 11))                 /*<It is  ENABLE CLOCK For WWDG                           >*/  
+#define SPI2_PCLK_EN()                                    (RCC->APB1ENR |= (1 << 14))                 /*<It is  ENABLE CLOCK For SPI2                           >*/  
+#define SPI3_PCLK_EN()                                    (RCC->APB1ENR |= (1 << 15))                 /*<It is  ENABLE CLOCK For SPI3                           >*/  
+#define USART2_PCLK_EN()                                  (RCC->APB1ENR |= (1 << 17))                 /*<It is  ENABLE CLOCK For USART2                         >*/  
+#define I2C1_PCLK_EN()                                    (RCC->APB1ENR |= (1 << 21))                 /*<It is  ENABLE CLOCK For I2C1                           >*/  
+#define I2C2_PCLK_EN()                                    (RCC->APB1ENR |= (1 << 22))                 /*<It is  ENABLE CLOCK For I2C2                           >*/ 
+#define I2C3_PCLK_EN()                                    (RCC->APB1ENR |= (1 << 23))                 /*<It is  ENABLE CLOCK For I2C3                           >*/ 
+#define PWR_PCLK_EN()                                     (RCC->APB1ENR |= (1 << 28))                 /*<It is  ENABLE CLOCK For Power interface                >*/  
+
+/*================================================================ Macro For APB2 enable clock =============================================================================*/
+#define TIM1_PCLK_EN()                                    (RCC->APB2ENR |= (1 << 0))                  /*<It is  ENABLE CLOCK For TIME1                          >*/ 
+#define USART1_PCLK_EN()                                  (RCC->APB2ENR |= (1 << 4))                  /*<It is  ENABLE CLOCK For USART1                         >*/  
+#define USART6_PCLK_EN()                                  (RCC->APB2ENR |= (1 << 5))                  /*<It is  ENABLE CLOCK For USART6                         >*/  
+#define ACD1_PCLK_EN()                                    (RCC->APB2ENR |= (1 << 8))                  /*<It is  ENABLE CLOCK For ACD1                           >*/
+#define SDIO_PCLK_EN()                                    (RCC->APB2ENR |= (1 << 11))                 /*<It is  ENABLE CLOCK For SDIO                           >*/  
+#define SPI1_PCLK_EN()                                    (RCC->APB2ENR |= (1 << 12))                 /*<It is  ENABLE CLOCK For SPI1                           >*/  
+#define SPI4_PCLK_EN()                                    (RCC->APB2ENR |= (1 << 13))                 /*<It is  ENABLE CLOCK For SPI4                           >*/  
+#define SYSCFG_PCLK_EN()                                  (RCC->APB2ENR |= (1 << 14))                 /*<It is  ENABLE CLOCK For System configuration           >*/  
+#define TIM9_PCLK_EN()                                    (RCC->APB2ENR |= (1 << 16))                 /*<It is  ENABLE CLOCK For TIME9                          >*/ 
+#define TIM10_PCLK_EN()                                   (RCC->APB2ENR |= (1 << 17))                 /*<It is  ENABLE CLOCK For TIME10                         >*/ 
+#define TIM11_PCLK_EN()                                   (RCC->APB2ENR |= (1 << 18))                 /*<It is  ENABLE CLOCK For TIME11                         >*/ 
+
+/*================================================================ End Macro For enable clock =========================================================================*/
+
+
+
+
    /*================================================================  Macro For Disable clock =========================================================================*/
+
+
 
    /*================================================================ Macro For AHB1 Disable clock =============================================================================*/
    #define GPIOA_PCLK_DI()                                   (RCC->AHB1ENR &= ~(1 << 0))                  /*<It is  ENABLE CLOCK For GPIOA                          >*/  
