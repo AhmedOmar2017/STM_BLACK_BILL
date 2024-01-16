@@ -160,7 +160,6 @@ void GPIO_DE_INIT(GPIO_RegDef_t *pGPIOx)
     }else if(pGPIOx == GPIOH){
         GPIOH_PCLK_DI();
     }
-    }
 }
 
 
