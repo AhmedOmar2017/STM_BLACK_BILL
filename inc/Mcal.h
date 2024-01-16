@@ -340,46 +340,46 @@ typedef struct{
 
 
    /*================================================================ Macro For AHB1 Disable clock =============================================================================*/
-   #define GPIOA_PCLK_DI()                                   (RCC->AHB1RSTR |= (1 << 0))                  /*<It is  DISABLE CLOCK For GPIOA                          >*/  
-   #define GPIOB_PCLK_DI()                                   (RCC->AHB1RSTR |= (1 << 1))                  /*<It is  DISABLE CLOCK For GPIOB                          >*/ 
-   #define GPIOC_PCLK_DI()                                   (RCC->AHB1RSTR |= (1 << 2))                  /*<It is  DIABLE CLOCK For GPIOC                           >*/  
-   #define GPIOD_PCLK_DI()                                   (RCC->AHB1RSTR |= (1 << 3))                  /*<It is  DISABLE CLOCK For GPIOD                          >*/         
-   #define GPIOE_PCLK_DI()                                   (RCC->AHB1RSTR |= (1 << 4))                  /*<It is  DISABLE CLOCK For GPIOE                          >*/  
-   #define GPIOH_PCLK_DI()                                   (RCC->AHB1RSTR |= (1 << 7))                  /*<It is  DISABLE CLOCK For GPIOH                          >*/  
-   #define CRC_PCLK_DI()                                     (RCC->AHB1RSTR |= (1 << 12))                 /*<It is  DISABLE CLOCK For CRC                            >*/ 
-   #define DMA1_PCLK_DI()                                    (RCC->AHB1RSTR |= (1 << 21))                 /*<It is  DISABLE DMA1 clock enable                        >*/
-   #define DMA2_PCLK_DI()                                    (RCC->AHB1RSTR |= (1 << 22))                 /*<It is  DISABLE DMA2 clock enable                        >*/
+   #define GPIOA_PCLK_DI()                                   do{(RCC->AHB1RSTR |= (1 << 0));           (RCC->AHB1RSTR &= ~(1 << 0));}while(0)                  /*<It is  DISABLE CLOCK For GPIOA                          >*/  
+   #define GPIOB_PCLK_DI()                                   do{(RCC->AHB1RSTR |= (1 << 1));           (RCC->AHB1RSTR &= ~(1 << 1));}while(0)                  /*<It is  DISABLE CLOCK For GPIOB                          >*/ 
+   #define GPIOC_PCLK_DI()                                   do{(RCC->AHB1RSTR |= (1 << 2));           (RCC->AHB1RSTR &= ~(1 << 2));}while(0)                  /*<It is  DIABLE CLOCK For GPIOC                           >*/  
+   #define GPIOD_PCLK_DI()                                   do{(RCC->AHB1RSTR |= (1 << 3));           (RCC->AHB1RSTR &= ~(1 << 3));}while(0)                  /*<It is  DISABLE CLOCK For GPIOD                          >*/         
+   #define GPIOE_PCLK_DI()                                   do{(RCC->AHB1RSTR |= (1 << 4));           (RCC->AHB1RSTR &= ~(1 << 4));}while(0)                  /*<It is  DISABLE CLOCK For GPIOE                          >*/  
+   #define GPIOH_PCLK_DI()                                   do{(RCC->AHB1RSTR |= (1 << 7));           (RCC->AHB1RSTR &= ~(1 << 7));}while(0)                  /*<It is  DISABLE CLOCK For GPIOH                          >*/  
+   #define CRC_PCLK_DI()                                     do{(RCC->AHB1RSTR |= (1 << 12));          (RCC->AHB1RSTR &= ~(1 << 12));}while(0)                 /*<It is  DISABLE CLOCK For CRC                            >*/ 
+   #define DMA1_PCLK_DI()                                    do{(RCC->AHB1RSTR |= (1 << 21));          (RCC->AHB1RSTR &= ~(1 << 21));}while(0)                 /*<It is  DISABLE DMA1 clock enable                        >*/
+   #define DMA2_PCLK_DI()                                    do{(RCC->AHB1RSTR |= (1 << 22));          (RCC->AHB1RSTR &= ~(1 << 22));}while(0)                 /*<It is  DISABLE DMA2 clock enable                        >*/
 
    /*================================================================ Macro For AHB2 Disable clock =============================================================================*/
-   #define OTGFS_PCLK_DI()                                   (RCC->AHB2RSTR |= (1 << 7))                  /*<It is  USB OTG FS clock disabled                        >*/ 
+   #define OTGFS_PCLK_DI()                                    do{(RCC->AHB2RSTR |= (1 << 7));                  /*<It is  USB OTG FS clock disabled                        >*/ 
 
 
    /*================================================================ Macro For APB1 Disable clock =============================================================================*/
-   #define TIM2_PCLK_DI()                                    (RCC->APB1RSTR |= (1 << 0))                  /*<It is  ENABLE CLOCK For TIME2                          >*/  
-   #define TIM3_PCLK_DI()                                    (RCC->APB1RSTR |= (1 << 1))                  /*<It is  ENABLE CLOCK For TIME3                          >*/  
-   #define TIM4_PCLK_DI()                                    (RCC->APB1RSTR |= (1 << 2))                  /*<It is  ENABLE CLOCK For TIME4                          >*/  
-   #define TIM5_PCLK_DI()                                    (RCC->APB1RSTR |= (1 << 3))                  /*<It is  ENABLE CLOCK For TIME5                          >*/  
-   #define WWDG_PCLK_DI()                                    (RCC->APB1RSTR |= (1 << 11))                 /*<It is  ENABLE CLOCK For WWDG                           >*/  
-   #define SPI2_PCLK_DI()                                    (RCC->APB1RSTR |= (1 << 14))                 /*<It is  ENABLE CLOCK For SPI2                           >*/  
-   #define SPI3_PCLK_DI()                                    (RCC->APB1RSTR |= (1 << 15))                 /*<It is  ENABLE CLOCK For SPI3                           >*/  
-   #define USART2_PCLK_DI()                                  (RCC->APB1RSTR |= (1 << 17))                 /*<It is  ENABLE CLOCK For USART2                         >*/  
-   #define I2C1_PCLK_DI()                                    (RCC->APB1RSTR |= (1 << 21))                 /*<It is  ENABLE CLOCK For I2C1                           >*/  
-   #define I2C2_PCLK_DI()                                    (RCC->APB1RSTR |= (1 << 22))                 /*<It is  ENABLE CLOCK For I2C2                           >*/ 
-   #define I2C3_PCLK_DI()                                    (RCC->APB1RSTR |= (1 << 23))                 /*<It is  ENABLE CLOCK For I2C3                           >*/ 
-   #define PWR_PCLK_DI()                                     (RCC->APB1RSTR |= (1 << 28))                 /*<It is  ENABLE CLOCK For Power interface                >*/  
+   #define TIM2_PCLK_DI()                                     do{(RCC->APB1RSTR |= (1 << 0));         (RCC->APB1RSTR &= ~(1 << 0));}while(0)          /*<It is  ENABLE CLOCK For TIME2                          >*/  
+   #define TIM3_PCLK_DI()                                     do{(RCC->APB1RSTR |= (1 << 1));         (RCC->APB1RSTR &= ~(1 << 1));}while(0)        /*<It is  ENABLE CLOCK For TIME3                          >*/  
+   #define TIM4_PCLK_DI()                                     do{(RCC->APB1RSTR |= (1 << 2));         (RCC->APB1RSTR &= ~(1 << 2));}while(0)         /*<It is  ENABLE CLOCK For TIME4                          >*/  
+   #define TIM5_PCLK_DI()                                     do{(RCC->APB1RSTR |= (1 << 3));         (RCC->APB1RSTR &= ~(1 << 3));}while(0)        /*<It is  ENABLE CLOCK For TIME5                          >*/  
+   #define WWDG_PCLK_DI()                                     do{(RCC->APB1RSTR |= (1 << 11));        (RCC->APB1RSTR &= ~(1 << 11));}while(0)         /*<It is  ENABLE CLOCK For WWDG                           >*/  
+   #define SPI2_PCLK_DI()                                     do{(RCC->APB1RSTR |= (1 << 14));        (RCC->APB1RSTR &= ~(1 << 14));}while(0)         /*<It is  ENABLE CLOCK For SPI2                           >*/  
+   #define SPI3_PCLK_DI()                                     do{(RCC->APB1RSTR |= (1 << 15));        (RCC->APB1RSTR &= ~(1 << 15));}while(0)        /*<It is  ENABLE CLOCK For SPI3                           >*/  
+   #define USART2_PCLK_DI()                                   do{(RCC->APB1RSTR |= (1 << 17));        (RCC->APB1RSTR &= ~(1 << 17));}while(0)         /*<It is  ENABLE CLOCK For USART2                         >*/  
+   #define I2C1_PCLK_DI()                                     do{(RCC->APB1RSTR |= (1 << 21));        (RCC->APB1RSTR &= ~(1 << 21));}while(0)         /*<It is  ENABLE CLOCK For I2C1                           >*/  
+   #define I2C2_PCLK_DI()                                     do{(RCC->APB1RSTR |= (1 << 22));        (RCC->APB1RSTR &= ~(1 << 22));}while(0)         /*<It is  ENABLE CLOCK For I2C2                           >*/ 
+   #define I2C3_PCLK_DI()                                     do{(RCC->APB1RSTR |= (1 << 23));        (RCC->APB1RSTR &= ~(1 << 23));}while(0)        /*<It is  ENABLE CLOCK For I2C3                           >*/ 
+   #define PWR_PCLK_DI()                                      do{(RCC->APB1RSTR |= (1 << 28));        (RCC->APB1RSTR &= ~(1 << 28));}while(0)         /*<It is  ENABLE CLOCK For Power interface                >*/  
 
    /*================================================================ Macro For APB2 Disable clock =============================================================================*/
-   #define TIM1_PCLK_DI()                                    (RCC->APB2RSTR |= (1 << 0))                  /*<It is  ENABLE CLOCK For TIME1                          >*/ 
-   #define USART1_PCLK_DI()                                  (RCC->APB2RSTR |= (1 << 4))                  /*<It is  ENABLE CLOCK For USART1                         >*/  
-   #define USART6_PCLK_DI()                                  (RCC->APB2RSTR |= (1 << 5))                  /*<It is  ENABLE CLOCK For USART6                         >*/  
-   #define ACD1_PCLK_DI()                                    (RCC->APB2RSTR |= (1 << 8))                  /*<It is  ENABLE CLOCK For ACD1                           >*/
-   #define SDIO_PCLK_DI()                                    (RCC->APB2RSTR |= (1 << 11))                 /*<It is  ENABLE CLOCK For SDIO                           >*/  
-   #define SPI1_PCLK_DI()                                    (RCC->APB2RSTR |= (1 << 12))                 /*<It is  ENABLE CLOCK For SPI1                           >*/  
-   #define SPI4_PCLK_DI()                                    (RCC->APB2RSTR |= (1 << 13))                 /*<It is  ENABLE CLOCK For SPI4                           >*/  
-   #define SYSCFG_PCLK_DI()                                  (RCC->APB2RSTR |= (1 << 14))                 /*<It is  ENABLE CLOCK For System configuration           >*/  
-   #define TIM9_PCLK_DI()                                    (RCC->APB2RSTR |= (1 << 16))                 /*<It is  ENABLE CLOCK For TIME9                          >*/ 
-   #define TIM10_PCLK_DI()                                   (RCC->APB2RSTR |= (1 << 17))                 /*<It is  ENABLE CLOCK For TIME10                         >*/ 
-   #define TIM11_PCLK_DI()                                   (RCC->APB2RSTR |= (1 << 18))                 /*<It is  ENABLE CLOCK For TIME11                         >*/ 
+   #define TIM1_PCLK_DI()                                     do{(RCC->APB2RSTR |= (1 << 0));         (RCC->APB2RSTR &= ~(1 << 0));}while(0)         /*<It is  ENABLE CLOCK For TIME1                          >*/ 
+   #define USART1_PCLK_DI()                                   do{(RCC->APB2RSTR |= (1 << 4));         (RCC->APB2RSTR &= ~(1 << 4));}while(0)         /*<It is  ENABLE CLOCK For USART1                         >*/  
+   #define USART6_PCLK_DI()                                   do{(RCC->APB2RSTR |= (1 << 5));         (RCC->APB2RSTR &= ~(1 << 5));}while(0)         /*<It is  ENABLE CLOCK For USART6                         >*/  
+   #define ACD1_PCLK_DI()                                     do{(RCC->APB2RSTR |= (1 << 8));         (RCC->APB2RSTR &= ~(1 << 8));}while(0)         /*<It is  ENABLE CLOCK For ACD1                           >*/
+   #define SDIO_PCLK_DI()                                     do{(RCC->APB2RSTR |= (1 << 11));        (RCC->APB2RSTR &= ~(1 << 11));}while(0)         /*<It is  ENABLE CLOCK For SDIO                           >*/  
+   #define SPI1_PCLK_DI()                                     do{(RCC->APB2RSTR |= (1 << 12));        (RCC->APB2RSTR &= ~(1 << 12));}while(0)         /*<It is  ENABLE CLOCK For SPI1                           >*/  
+   #define SPI4_PCLK_DI()                                     do{(RCC->APB2RSTR |= (1 << 13));        (RCC->APB2RSTR &= ~(1 << 13));}while(0)        /*<It is  ENABLE CLOCK For SPI4                           >*/  
+   #define SYSCFG_PCLK_DI()                                   do{(RCC->APB2RSTR |= (1 << 14));        (RCC->APB2RSTR &= ~(1 << 14));}while(0)         /*<It is  ENABLE CLOCK For System configuration           >*/  
+   #define TIM9_PCLK_DI()                                     do{(RCC->APB2RSTR |= (1 << 16));        (RCC->APB2RSTR &= ~(1 << 16));}while(0)         /*<It is  ENABLE CLOCK For TIME9                          >*/ 
+   #define TIM10_PCLK_DI()                                    do{(RCC->APB2RSTR |= (1 << 17));        (RCC->APB2RSTR &= ~(1 << 17));}while(0)         /*<It is  ENABLE CLOCK For TIME10                         >*/ 
+   #define TIM11_PCLK_DI()                                    do{(RCC->APB2RSTR |= (1 << 18));        (RCC->APB2RSTR &= ~(1 << 18));}while(0)        /*<It is  ENABLE CLOCK For TIME11                         >*/ 
 
    /*================================================================ End Macro For Disable clock =========================================================================*/
 
