@@ -89,7 +89,7 @@ void GPIO_INIT(GPIO_Handle *pGPIO_Handle)
     if(pGPIO_Handle->GPIO_PinConfig.GPIO_PinMode <= GPIO_MODE_ANALOG){
         // non intruppt mode
         temp = (pGPIO_Handle->GPIO_PinConfig.GPIO_PinMode << (2 * pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber));
-        pGPIO_Handle->pGPIOx->MODER &= ~(0x3 << pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber);      
+        pGPIO_Handle->pGPIOx->MODER &= ~(0x3 << pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber);                                           /*<It's clearing two bits before writing on it>*/
         pGPIO_Handle->pGPIOx->MODER |= temp;
 
     }else{
@@ -117,19 +117,19 @@ void GPIO_INIT(GPIO_Handle *pGPIO_Handle)
 
     // configure the speed
     temp = (pGPIO_Handle->GPIO_PinConfig.GPIO_PinSpeed << (2 * pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber));
-    pGPIO_Handle->pGPIOx->OSPEEDR &= ~(0x3 << pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber);
+    pGPIO_Handle->pGPIOx->OSPEEDR &= ~(0x3 << pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber);                                          /*<It's clearing two bits before writing on it>*/
     pGPIO_Handle->pGPIOx->OSPEEDR |= temp;
     temp = 0;
 
     //3. configration the pupd
     temp = (pGPIO_Handle->GPIO_PinConfig.GPIO_PinPuPdControl << (2 * pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber));
-    pGPIO_Handle->pGPIOx->PUPDR &= ~(0x3 << pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber);
+    pGPIO_Handle->pGPIOx->PUPDR &= ~(0x3 << pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber);                                            /*<It's clearing two bits before writing on it>*/
     pGPIO_Handle->pGPIOx->PUPDR |= temp;
 
     //4. configuration the optype.
     temp = 0; 
     temp = (pGPIO_Handle->GPIO_PinConfig.GPIO_PinOPType << pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber);
-    pGPIO_Handle->pGPIOx->OTYPER &= ~(0x1 << pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber);
+    pGPIO_Handle->pGPIOx->OTYPER &= ~(0x1 << pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber);                                           /*<It's clearing two bits before writing on it>*/
     pGPIO_Handle->pGPIOx->OTYPER |= temp;
 
     // 5. configure the alt function reg
@@ -137,7 +137,7 @@ void GPIO_INIT(GPIO_Handle *pGPIO_Handle)
         uint8_t temp1, temp2;
         temp1 = pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber / 8;
         temp2 = pGPIO_Handle->GPIO_PinConfig.GPIO_PinNumber % 8;
-        pGPIO_Handle->pGPIOx->AFR[temp1] &= ~(0xF << (4 * temp2));
+        pGPIO_Handle->pGPIOx->AFR[temp1] &= ~(0xF << (4 * temp2));                                                                   /*<It's clearing two bits before writing on it>*/
         pGPIO_Handle->pGPIOx->AFR[temp1] |= (pGPIO_Handle->GPIO_PinConfig.GPIO_PinAltFunMode << (4 * temp2));
 
     }
