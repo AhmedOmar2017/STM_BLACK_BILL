@@ -146,7 +146,21 @@ void GPIO_INIT(GPIO_Handle *pGPIO_Handle)
 
 void GPIO_DE_INIT(GPIO_RegDef_t *pGPIOx)
 {
-
+   
+    if(pGPIOx == GPIOA){
+       GPIOA_PCLK_DI();
+    }else if(pGPIOx == GPIOB){
+        GPIOB_PCLK_DI();
+    }else if(pGPIOx == GPIOC){
+        GPIOC_PCLK_DI();
+    }else if(pGPIOx == GPIOD){
+        GPIOD_PCLK_DI();
+    }else if(pGPIOx == GPIOE){
+        GPIOE_PCLK_DI();
+    }else if(pGPIOx == GPIOH){
+        GPIOH_PCLK_DI();
+    }
+    }
 }
 
 
