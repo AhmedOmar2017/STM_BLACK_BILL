@@ -184,7 +184,7 @@ uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx)
 
 
 
-void GPIO_WriteFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Value)
+void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Value)
 {
 	if (Value == 1){
 		pGPIOx->ODR |= (1<<PinNumber);
@@ -194,7 +194,7 @@ void GPIO_WriteFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Va
 }
 
 
-void GPIO_WriteFromInputPort(GPIO_RegDef_t *pGPIOx, uint16_t Value)
+void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t Value)
 {
 	pGPIOx->ODR = Value;
 }
